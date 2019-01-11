@@ -1,0 +1,28 @@
+{{ define "main" }}
+
+    <div class="row">
+    <header class="col-xs-12">
+        <h1 class="tag tag-contrast tag-{{ anchorize .Title }} shadow">
+            {{ title .Title }}
+        </h1>
+
+        {{ if .Params }}
+            <div class="card card-outline no-animate">
+                <div class="card-content">
+                    {{ .Params.description }}
+
+                        <a href="{{ .Params.link }}" class="btn btn-sm">{{ .Title }}</a>
+                </div>
+      
+            </div>
+        {{ end }}
+    </header>
+
+    {{ range.Pages }}
+
+    <div class="col-sm-12 col-md-6 col-lg-4">{{ partial "lesson-card" . }}</div>
+
+    {{ end }}
+    </div>
+
+{{ end }}
