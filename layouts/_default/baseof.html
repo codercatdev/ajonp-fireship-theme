@@ -2,13 +2,15 @@
 <html lang="{{ $.Site.LanguageCode | default "en" }}">
   <head>
     <!-- GTAG -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-59099331-16"></script>
+    {{ with .Site.Params.googleAnalytics }}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', 'UA-59099331-16');
+      gtag('config', '{{ . }}');
     </script>
+    {{ end }}
 
     <!-- JS & CSS -->
     <link rel="prefetch" as="script" href="/components/{{ .Site.Data.components.bundle }}">
